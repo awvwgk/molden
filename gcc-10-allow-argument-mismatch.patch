@@ -1,0 +1,26 @@
+diff --git a/ambfor/makefile b/ambfor/makefile
+index c67e586..b657176 100644
+--- a/ambfor/makefile
++++ b/ambfor/makefile
+@@ -15,7 +15,7 @@
+ CFLAGS = -c -g ${EXT}
+ #FC = g77 
+ FC = gfortran
+-FFLAGS = -c -g -ffast-math -funroll-loops -O3
++FFLAGS = -c -g -ffast-math -funroll-loops -O3 -fallow-argument-mismatch
+ LIBS =  -lm
+ LDR = ${FC} -g
+ EXT :=
+diff --git a/makefile b/makefile
+index 58a9e74..7a3b568 100644
+--- a/makefile
++++ b/makefile
+@@ -96,7 +96,7 @@ ifneq ($(comgcc), $(empty))
+    EXTRAZ = -Wno-implicit-function-declaration
+    EXT = ${EXTRAZ}
+ endif
+-FFLAGS = -g ${AFLAG}
++FFLAGS = -g ${AFLAG} -fallow-argument-mismatch
+ LIBS =  -L/usr/X11R6/lib -lX11 -lm
+ ifeq ($(AFLAG),"-m64")
+ LIBS =  -L/usr/X11R6/lib64 -lX11 -lm
